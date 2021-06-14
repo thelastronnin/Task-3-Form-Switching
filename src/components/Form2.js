@@ -5,7 +5,7 @@ import InputFieldTextArea from "./InputFieldTextArea";
 import Button from "./Button";
 
 // iF = INPUT FIELD
-class Form2 extends React.Component {
+class Form1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,8 +52,7 @@ class Form2 extends React.Component {
       : this.setState({ errorMssgFName: "" });
 
     if (/[^a-zA-Z ]/.test(value)) {
-      this.setState({ errorfName: true });
-      this.setState({ errorMssgFName: "A-Z letters only" });
+      this.setState({ errorfName: true, errorMssgFName: "A-Z letters only" });
     }
     return this.setState({ fName: value });
   };
@@ -68,8 +67,7 @@ class Form2 extends React.Component {
       : this.setState({ errorMssgMName: "" });
 
     if (/[^a-zA-Z ]/.test(value)) {
-      this.setState({ errorMName: true });
-      this.setState({ errorMssgMName: "A-Z letters only" });
+      this.setState({ errorMName: true, errorMssgMName: "A-Z letters only" });
     }
     return this.setState({ mName: value });
   };
@@ -84,8 +82,7 @@ class Form2 extends React.Component {
       : this.setState({ errorMssgLName: "" });
 
     if (/[^a-zA-Z ]/.test(value)) {
-      this.setState({ errorLName: true });
-      this.setState({ errorMssgLName: "A-Z letters only" });
+      this.setState({ errorLName: true, errorMssgLName: "A-Z letters only" });
     }
     return this.setState({ lName: value });
   };
@@ -109,12 +106,14 @@ class Form2 extends React.Component {
       ? this.setState({ errorAddress: true })
       : this.setState({ errorAddress: false });
     !value
-      ? this.setState({ setErrorMssgAddress: "Invalid Input" })
-      : this.setState({ setErrorMssgAddress: "" });
+      ? this.setState({ errorMssgAddress: "Invalid Input" })
+      : this.setState({ errorMssgAddress: "" });
 
     if (/[^a-zA-Z 0-9 ,.-]/.test(value)) {
-      this.setState({ errorAddress: true });
-      this.setState({ setErrorMssgAddress: "Alphanumeric and (, - .) only" });
+      this.setState({
+        errorAddress: true,
+        errorMssgAddress: "Alphanumeric and (, - .) only",
+      });
     }
     return this.setState({ address: value });
   };
@@ -125,17 +124,15 @@ class Form2 extends React.Component {
       ? this.setState({ errorContact: true })
       : this.setState({ errorContact: false });
     !value
-      ? this.setState({ setErrorMssgContact: "Invalid Input" })
-      : this.setState({ setErrorMssgContact: "" });
+      ? this.setState({ errorMssgContact: "Invalid Input" })
+      : this.setState({ errorMssgContact: "" });
 
     if (value.length < 11) {
-      this.setState({ errorContact: true });
-      this.setState({ setErrorMssgContact: "Invalid Input" });
+      this.setState({ errorContact: true, errorMssgContact: "Invalid Input" });
     }
 
     if (/[^0-9]/.test(value)) {
-      this.setState({ errorContact: true });
-      this.setState({ setErrorMssgContact: "Invalid Input" });
+      this.setState({ errorContact: true, errorMssgContact: "Invalid Input" });
     }
     return this.setState({ contact: value });
   };
@@ -146,12 +143,11 @@ class Form2 extends React.Component {
       ? this.setState({ errorEmail: true })
       : this.setState({ errorEmail: false });
     !value
-      ? this.setState({ setErrorMssgEmail: "Invalid Input" })
-      : this.setState({ setErrorMssgEmail: "" });
+      ? this.setState({ errorMssgEmail: "Invalid Input" })
+      : this.setState({ errorMssgEmail: "" });
 
-    if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(value)) {
-      this.setState({ errorEmail: true });
-      this.setState({ setErrorMssgEmail: "Email Address only" });
+    if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(value) && value !== "") {
+      this.setState({ errorEmail: true, errorMssgEmail: "Email Address only" });
     }
     return this.setState({ email: value });
   };
@@ -249,4 +245,4 @@ class Form2 extends React.Component {
   }
 }
 
-export default Form2;
+export default Form1;
