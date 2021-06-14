@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import InputField from "./InputField";
-// import InputFieldTextArea from "./InputFieldTextArea";
+import InputFieldTextArea from "./InputFieldTextArea";
 import Button from "./Button";
 
 // iF = INPUT FIELD
 
-const Form = ({ onAdd }) => {
+const Form1 = ({ title, onAdd }) => {
   const [fName, setFname] = useState("");
   const [mName, setMname] = useState("");
   const [lName, setLname] = useState("");
@@ -127,6 +127,7 @@ const Form = ({ onAdd }) => {
 
   return (
     <form className="add-form">
+      <h3>{title}</h3>
       {/* FIRST NAME INPUT FIELD */}
       <InputField
         iFLabel="First name"
@@ -176,14 +177,14 @@ const Form = ({ onAdd }) => {
       />
 
       {/* ADDRESS INPUT FIELD */}
-      {/* <InputFieldTextArea
+      <InputFieldTextArea
         iFLabel="Address"
         iFPlaceholder="Address"
         iFvalue={address}
         onChange={(e) => onChangeIfAddress(e.target.value)}
         iFError={errorAddress}
         iFErrorMessage={errorMssgAddress}
-      /> */}
+      />
 
       {/* CONTACT INPUT FIELD */}
       <InputField
@@ -214,4 +215,4 @@ const Form = ({ onAdd }) => {
   );
 };
 
-export default Form;
+export default Form1;
